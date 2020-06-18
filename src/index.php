@@ -11,7 +11,8 @@
 		Dieses Projekt wurde im Informatik-Kurs entwickelt vom 15.06.2020 bis XX.07.2020.</p>
 		
 		<div name="links">
-			<a href="impressum.html"><button>Impressum!</button></a>
+			<a href="impressum.html"><button>Impressum!</button></a><br />
+			<a href="hypothesentest.html"><button>Hypothesentests</button></a>
 		</div>
 	</body>
 </html>
