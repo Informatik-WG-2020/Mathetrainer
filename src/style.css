@@ -1,0 +1,129 @@
+@font-face {
+    font-family: "Title";
+    src: url("fonts/OpenSansCondensed-Light.ttf");
+}
+
+@font-face {
+    font-family: "Main";
+    src: url("fonts/OpenSansCondensed-Light.ttf");
+}
+
+body {
+    --color: #77c9ff;
+    --color-dark: #4867be;
+    --dark: #333;
+    background-color: var(--dark);
+    color: var(--color);
+    font-family: "Main";
+    font-size: 18pt;
+}
+
+h1 {
+    font-family: "Title";
+    font-size: 30pt;
+}
+
+button {
+    background-color: var(--color);
+    color: var(--dark);
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+div.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sidebar .filler {
+    height: 100%;
+    background-color: var(--color);
+    position: relative;
+    z-index: 1;
+}
+
+#sidebar.open > .handle {
+    right: 0;
+}
+
+.handle {
+    position: absolute;
+    width: 25px;
+    height: 100%;
+    top: 0;
+    right: -25px;
+    background-color: #fffa;
+    transition: inherit;
+    transition-delay: 0.25s;
+    z-index: 1;
+}
+
+.handle > img {
+    position: absolute;
+    top: calc(50% - 15px);
+    height: 25px;
+}
+
+#sidebar {
+    position: fixed;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color);
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    box-shadow: 0 0 10px #0007;
+}
+
+#sidebar.open {
+    left: 0;
+}
+
+#sidebar > a {
+    display: flex;
+    color: var(--color-dark);
+    background-color: var(--color);
+    height: min-content;
+    width: 100%;
+    transition-duration: 0.3s;
+    box-shadow: 0 4px 10px -2px #0007;
+    position: relative;
+}
+
+#sidebar > a:hover {
+    color: white;
+    background-color: var(--color-dark);
+}
+
+#sidebar h3 {
+    margin: 5px;
+    margin-left: 20px;
+    transition: inherit;
+}
+#sidebar > a:hover > h3 {
+    margin-left: 25px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+table.invisible {
+    border: 1px solid white;
+}
+
+td, th {
+    padding: 5px;
+    text-align: left;
+    color: white;
+}

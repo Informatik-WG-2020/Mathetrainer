@@ -68,17 +68,26 @@
 		}
 		
 		function check(){
-			string = "";
-			test = false;
-			if(op == 0 && document.getElementById("right").checked) test = true;
-			else if (op == 1 && document.getElementById("left").checked) test = true;
-			if(test) string = "Du hast die Art des Tests richtig erkannt!<br>";
-			else string = "Du hast die Art des Tests leider nicht richtig erkannt!<br>";
-			user = [];
-			user[0] = parseInt(document.getElementById("leftborder").value);
-			user[1] = parseInt(document.getElementById("rightborder").value);
-			if(user[0] == solution[0] && user[1] == solution[1]) string = string+"Du hast den Ablehnungsbereich richtig angegeben!";
-			else string = string+"Du hast den Ablehnungsbereich leider nicht richtig angegeben!";
+			if(document.getElementById("leftborder").value && document.getElementById("rightborder") && (document.getElementById("left").checked || document.getElementById("right").checked)){
+				string = "";
+				test = false;
+				if(op == 0 && document.getElementById("right").checked) test = true;
+				else if (op == 1 && document.getElementById("left").checked) test = true;
+				if(test) string = "Du hast die Art des Tests richtig erkannt!<br>";
+				else string = "Du hast die Art des Tests leider nicht richtig erkannt!<br>";
+				user = [];
+				user[0] = parseInt(document.getElementById("leftborder").value);
+				user[1] = parseInt(document.getElementById("rightborder").value);
+				if(user[0] == solution[0] && user[1] == solution[1]) string = string+"Du hast den Ablehnungsbereich richtig angegeben!<p>";
+				else string = string+"Du hast den Ablehnungsbereich leider nicht richtig angegeben!<p>";
+				document.getElementById("return").innerHTML = string;
+			}
+		}
+		
+		function show(){
+			if(op == 0) string = "Es wird ein rechtsseitiger Test durchgeführt.<br>"
+			else string = "Es wird ein linksseitiger Test durchgeführt.<br>"
+			string = string+"Der Ablehnungsbereich ist A = ["+solution[0]+", ... , "+solution[1]+"].<p>"
 			document.getElementById("return").innerHTML = string;
 		}
 	</script>
@@ -95,6 +104,7 @@
 		<button id = "check" onClick="check()">Prüfen</button>
 		<p>
 		<div id="return"></div>
+		<button onClick="show()">Lösung anzeigen</button>
 		<p>
 		<button onClick="aufgabe()">Neue Aufgabe</button>
 	</body>
