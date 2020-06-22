@@ -5,33 +5,57 @@
 
 @font-face {
     font-family: "Main";
-    src: url("fonts/OpenSansCondensed-Light.ttf");
+    src: url("fonts/NotoSansHK-Light.otf");
+}
+
+@font-face {
+    font-family: "Input";
+    src: url("fonts/NotoSansHK-Regular.otf");
 }
 
 body {
-    --color: #77c9ff;
-    --color-dark: #4867be;
+    --color: #4faace;
+    --color-dark: #3a4b81;
     --dark: #333;
     background-color: var(--dark);
-    color: var(--color);
+    color: white;
     font-family: "Main";
-    font-size: 18pt;
+    font-size: 15pt;
+    font-weight: lighter;
 }
 
 h1 {
     font-family: "Title";
     font-size: 30pt;
+    color: var(--color);
 }
 
-button {
+h2 {
+    font-family: "Title";
+    font-size: 21pt;
+    color: var(--color);
+}
+
+button, input, table {
+    box-shadow: 0 0 5px #0007;
+    margin: 3px;
+}
+
+button, input[type=submit] {
     background-color: var(--color);
     color: var(--dark);
     border: none;
     border-radius: 5px;
     font-family: inherit;
-    font-size: inherit;
-    padding: 5px 20px;
+    padding: 4px 8px;
     cursor: pointer;
+    transition-duration: 0.1s;
+    font-weight: bold;
+}
+
+button:hover, input[type=submit]:hover {
+    background-color: var(--color-dark);
+    color: white;
 }
 
 div.center {
@@ -75,13 +99,13 @@ div.center {
     display: flex;
     flex-direction: column;
     background-color: var(--color);
-    left: -200px;
-    width: 200px;
+    left: -300px;
+    width: 300px;
     height: 100%;
     top: 0;
     transition-duration: 0.3s;
     transition-timing-function: ease;
-    box-shadow: 0 0 10px #0007;
+    box-shadow: 0 0 10px #000a;
 }
 
 #sidebar.open {
@@ -95,7 +119,7 @@ div.center {
     height: min-content;
     width: 100%;
     transition-duration: 0.3s;
-    box-shadow: 0 4px 10px -2px #0007;
+    box-shadow: 0 4px 8px -2px #0005;
     position: relative;
 }
 
@@ -115,15 +139,36 @@ div.center {
 
 a {
     color: white;
+}
+
+#sidebar a {
     text-decoration: none;
 }
 
-table.invisible {
+table {
+    border: 1px solid white;
+}
+
+table.border {
+    border-collapse: collapse;
+}
+
+table.border td, table.border th {
     border: 1px solid white;
 }
 
 td, th {
-    padding: 5px;
+    padding: 2px 5px;
     text-align: left;
     color: white;
+}
+
+input {
+    border: none;
+    border-radius: 2px;
+    color: black;
+    background-color: white;
+    font-family: "Input";
+    font-size: 11pt;
+    padding: 3px 6px;
 }
