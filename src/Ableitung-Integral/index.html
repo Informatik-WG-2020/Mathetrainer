@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../style.css">
+    <title>Ableitung und Integrale</title>
+    Ableitung und Integrale<br><br>
+</head>
+<body>
+    
+    Aufgabentyp wählen<br>
+    <button onclick="eins()">Ableitung</button>
+    <button onclick="zwei()">Stammfunktion</button>
+    <button onclick="eee()">mit oder ohne e</button>
+    <p id="ee">Aufgabe ohne e</p>
+    <p id="aufgabe"></p>
+    <span><p id="art"></p><input type="text" id = "solved" placeholder =  "Lösung"><button onclick="solve()">Lösung Prüfen</button></span>    
+    <p id="solution"></p>
+    <p id="rueckgabe"></p>
+    <br>
+    <!--<br>
+    <br>
+    <button onclick="window.open('https://www.memedroid.com/memes/top/day','_blank')">Drück mich</button>-->
+    <script>
+        var richtig = 0;
+        var a;
+        var n;
+        var ableitung;
+        var e = false;
+        var ergebnis ="";
+        function eee(){
+            if(e==true){
+                e = false;
+                document.getElementById("ee").innerHTML = "Aufgabe ohne e";
+            } else {
+                e = true;
+                document.getElementById("ee").innerHTML = "Aufgabe mit e";
+            }
+        }
+        function eins(){
+            document.getElementById("art").innerHTML = "f'(x) = ";
+            if (e==false){
+                ableitung = true;
+                n = getRandomInt(10);
+                a = getRandomInt(9)+1;
+                if(n==1){
+                    document.getElementById("aufgabe").innerHTML="f(x) = "+a+"x";
+                }else if (n==0){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = "+ a;
+                }else{
+                document.getElementById("aufgabe").innerHTML ="f(x) = " + a + "x<sup>" + n + "</sup>";
+                }
+            } else {
+                ableitung = true;
+                n = getRandomInt(10)+1;
+                a = getRandomInt(9)+1;
+                if(n==1){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = "+a+"e<sup>x</sup>";
+                }else if (n==0){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = "+ a + "e<sup>0</sup>";
+                    }else{
+                document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "e<sup>" + n + "x</sup>";
+                }
+            }
+        }
+        function zwei(){
+            document.getElementById("art").innerHTML = "F(x) = "
+            if (e==false){
+                ableitung = false;
+                n = getRandomInt(10);
+                a = getRandomInt(9)+1;
+                if(n==0){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = " + a;
+                }else if(n==1){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "x";
+                }else{
+                document.getElementById("aufgabe").innerHTML ="f(x) = " + a + "x<sup>" + n + "</sup>";
+                }
+            } else {
+                ableitung = false;
+                n= getRandomInt(10);
+                a = getRandomInt(9)+1;
+                if(n==1){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = "+a+"e<sup>x</sup>";
+                }else if (n==0){
+                    document.getElementById("aufgabe").innerHTML = "f(x) = "+ a + "e<sup>0</sup>";
+                    }else{
+                document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "e<sup>" + n + "x</sup>";
+                }
+            }
+        }
+        function getRandomInt(max){
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        function solve(){
+            var geloest = document.getElementById("solved").value;
+            if(e){
+                if(ableitung){
+                    a = a*n;
+                    ergebnis = a + "e^(" + n + "x)";
+                    document.getElementById("solution").innerHTML = "f'(x) = " + a + "e<sup>" + n + "x</sup>";
+                    check(geloest);
+                } else {
+                    a = a/n;
+                    if(a==0){
+                        ergebnis = 0+"";
+                    } else if(a==1){
+                        ergebnis = "e^(" + n + "X)";
+                    }else{
+                        ergebnis = a+"e^(" + n + "x)";
+                    }
+                    document.getElementById("solution").innerHTML = "F(x) = " + a + "e<sup>" + n + "x</sup>";
+                    check(geloest);
+                }
+            }else{
+                if(ableitung){
+                    a = a*n;
+                    n = n - 1;
+                    if(n==0){
+                        ergebnis = a+"";
+                        document.getElementById("solution").innerHTML = "f'(x) = " + a;
+                    } else if(a==0){
+                        ergebnis = "0";
+                        document.getElementById("solution").innerHTML = "f'(x) = 0";
+                    } else {
+                        ergebnis = a + "x^" + n;
+                        document.getElementById("solution").innerHTML = "f'(X) = " + a + "x<sup>" + n + "</sup>";
+                    }
+                    check(geloest);
+                } else {
+                    n = n+1;
+                    a = a/n;
+                    ergebnis = a + "x^" + n;
+                    document.getElementById("solution").innerHTML = "F(x) = " + a + "x<sup>" + n + "</sup>";
+                    check(geloest);
+                }
+            }
+            
+        }
+        function check(geloest){
+            if(ergebnis === geloest){
+                richtig += 1;
+                document.getElementById("rueckgabe").innerHTML = "Herzlichen Glückwunsch die Eingabe war richtig. <br>Du hast " + richtig + " richtige Lösungen eingegeben";
+            } else {
+                var beleidigung;
+                var answer = getRandomInt(5);
+                if(answer==0){
+                    document.getElementById("rueckgabe").innerHTML = "Was kannst du eigentlich du Depp, die Eingabe war ja grottenfalsch!";
+                }else if(answer==1){
+                    document.getElementById("rueckgabe").innerHTML = "Du Sekkel wer hent dir's denge beibracht?!?";
+                }else if(answer==2){
+                    document.getElementById("rueckgabe").innerHTML = "Haidabim, bisch du underentwickelt oder was isch?";
+                }else if(answer==3){
+                    document.getElementById("rueckgabe").innerHTML = "Torfkop, wo bisch'n heut mit den Gedanken?";
+                }else{
+                    document.getElementById("rueckgabe").innerHTML = "Du Mathenoob.";
+                }
+            }
+                
+        }
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../sidebar.js"></script>
+</body>
+</html>

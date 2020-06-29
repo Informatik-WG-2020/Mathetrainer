@@ -5,12 +5,12 @@
 
 @font-face {
     font-family: "Main";
-    src: url("fonts/NotoSansHK-Light.otf");
+    src: url("fonts/Nunito-Light.ttf");
 }
 
 @font-face {
     font-family: "Input";
-    src: url("fonts/NotoSansHK-Regular.otf");
+    src: url("fonts/Nunito-Regular.ttf");
 }
 
 body {
@@ -20,14 +20,16 @@ body {
     background-color: var(--dark);
     color: white;
     font-family: "Main";
-    font-size: 15pt;
+    font-size: 13pt;
     font-weight: lighter;
+    padding: 0 60px;
 }
 
 h1 {
     font-family: "Title";
     font-size: 30pt;
     color: var(--color);
+    margin: 30px 0;
 }
 
 h2 {
@@ -56,6 +58,13 @@ button, input[type=submit] {
 button:hover, input[type=submit]:hover {
     background-color: var(--color-dark);
     color: white;
+}
+
+span {
+    display: flex;
+    align-items: center;
+    max-width: calc(90% - 50px);
+    margin: 5px;
 }
 
 div.center {
@@ -129,7 +138,7 @@ div.center {
 }
 
 #sidebar h3 {
-    margin: 5px;
+    margin: 8px;
     margin-left: 20px;
     transition: inherit;
 }
@@ -147,14 +156,20 @@ a {
 
 table {
     border: 1px solid white;
-}
-
-table.border {
     border-collapse: collapse;
 }
 
-table.border td, table.border th {
+table.invisible {
+    border: none;
+    box-shadow: none;
+}
+
+table td, table th {
     border: 1px solid white;
+}
+
+table.invisible td, table.invisible th {
+    border: none;
 }
 
 td, th {
@@ -171,4 +186,12 @@ input {
     font-family: "Input";
     font-size: 11pt;
     padding: 3px 6px;
+}
+
+li.bad {
+    color: #be4c4c;
+}
+
+li.good {
+    color: #88fd8e;
 }

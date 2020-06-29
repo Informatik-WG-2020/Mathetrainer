@@ -126,7 +126,7 @@
 
 
 echo'
-<table>
+<table class="invisible">
         <tr>
             <td>
                 <p>Geben Sie hier ihre Lösung an:</p>

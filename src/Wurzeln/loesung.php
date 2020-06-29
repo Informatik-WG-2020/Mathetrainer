@@ -24,7 +24,7 @@ if ($eingabe == $ergebnis) {
     if ($caufgaben>=10) 
     {
         echo'
-            <table>
+            <table class="invisible">
                     <tr>
                         <td>
                             <p>Super! Deine Antwort ist richtig! Klicke</p>
@@ -42,7 +42,7 @@ if ($eingabe == $ergebnis) {
     else 
     {
         echo'
-            <table>
+            <table class="invisible">
                     <tr>
                         <td>
                             <p>Super! Deine Antwort ist richtig! Klicke</p>
@@ -61,7 +61,7 @@ if ($eingabe == $ergebnis) {
 elseif ($caufgaben>=10) 
 {
     echo'
-    <table>
+    <table class="invisible">
             <tr>
                 <td>
                     <p>Schade... Deine Antwort ist leider nicht richtig. Klicke</p>
@@ -79,7 +79,7 @@ elseif ($caufgaben>=10)
 else
 {
     echo'
-    <table>
+    <table class="invisible">
             <tr>
                 <td>
                     <p>Schade... Deine Antwort ist leider nicht richtig. Klicke</p>

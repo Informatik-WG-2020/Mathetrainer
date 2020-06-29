@@ -8,7 +8,7 @@
 	<script>
 		window.onload = aufgabe;
 		
-		things = ["Schrauben", "Handys", "Äpfeln"]
+		things = ["Schrauben", "Handys", "Bananen"]
 		operator = ["weniger","mehr","≥","≤"]
 		people = ["Händler","Käufer"]
 		doing = ["verkauft","kauft"]
@@ -29,6 +29,8 @@
 		}
 		
 		function aufgabe(){
+			document.getElementById("everything").style.display = "none";
+			document.getElementById("wait").style.display = "block";
 			document.getElementById("leftborder").value = "";
 			document.getElementById("rightborder").value = "";
 			document.getElementById("return").innerHTML = "";
@@ -75,8 +77,11 @@
 					solution[3] = cumulative;
 				}
 				if((i-2) > 0) solution[1] = i-2;
+				else aufgabe();
 				solution[0] = 0;
 			}
+			document.getElementById("everything").style.display = "block";
+			document.getElementById("wait").style.display = "none";
 		}
 		
 		function check(){
@@ -110,7 +115,8 @@
 		}
 	</script>
 	<body>
-		<div class="center">	
+		<h1>Hypothesentests</h1>
+		<div id="everything">	
 			<div id="Aufgabe"></div></br>
 			<form>
 			  Was für ein Test wird durchgeführt?<br>
@@ -127,7 +133,8 @@
 			<button id="showsolution" onClick="show()">Lösung anzeigen</button>
 			<p>
 			<button id="task" onClick="aufgabe()">Neue Aufgabe</button>
-		</div>	
+		</div>
+		<div id="wait">Bitte haben Sie einen Moment Geduld. Ihre Aufgabe wird generiert!</div>
 		
 		<script src="../jquery.js"></script>
 		<script src="../sidebar.js"></script>
