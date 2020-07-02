@@ -7,8 +7,7 @@
     <title>Mathetrainer: Ableitung und Integrale</title>
 </head>
 <body>
-    <a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
-	<h1>Ableitung und Integrale</h1><br><br>
+    <h1>Ableitung und Integrale</h1>
     Aufgabentyp wählen<br>
     <button onclick="eins()">Ableitung</button>
     <button onclick="zwei()">Stammfunktion</button>
@@ -18,11 +17,15 @@
     <span><p id="art"></p><input type="text" id = "solved" placeholder =  "Lösung"><button onclick="solve()">Lösung Prüfen</button></span>    
     <p id="solution"></p>
     <p id="rueckgabe"></p>
+    <p id="nomal"></p>
     <br>
-    <!--<br>
     <br>
-    <button onclick="window.open('https://www.memedroid.com/memes/top/day','_blank')">Drück mich</button>-->
+    <br>
+    <button onclick="window.open('https://www.memedroid.com/memes/top/day','_blank')">Drück mich</button>
     <script>
+        var neo;
+        var az = "f'(x) = ";
+        var die = 0;
         var richtig = 0;
         var a;
         var n;
@@ -39,6 +42,8 @@
             }
         }
         function eins(){
+            az = "f'(x) = ";
+            die = 0;
             document.getElementById("art").innerHTML = "f'(x) = ";
             if (e==false){
                 ableitung = true;
@@ -49,7 +54,7 @@
                 }else if (n==0){
                     document.getElementById("aufgabe").innerHTML = "f(x) = "+ a;
                 }else{
-                document.getElementById("aufgabe").innerHTML ="f(x) = " + a + "x<sup>" + n + "</sup>";
+                    document.getElementById("aufgabe").innerHTML ="f(x) = " + a + "x<sup>" + n + "</sup>";
                 }
             } else {
                 ableitung = true;
@@ -60,11 +65,13 @@
                 }else if (n==0){
                     document.getElementById("aufgabe").innerHTML = "f(x) = "+ a + "e<sup>0</sup>";
                     }else{
-                document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "e<sup>" + n + "x</sup>";
+                    document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "e<sup>" + n + "x</sup>";
                 }
             }
         }
         function zwei(){
+            az = "f'(x) = ";
+            die = 0;
             document.getElementById("art").innerHTML = "F(x) = "
             if (e==false){
                 ableitung = false;
@@ -75,18 +82,18 @@
                 }else if(n==1){
                     document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "x";
                 }else{
-                document.getElementById("aufgabe").innerHTML ="f(x) = " + a + "x<sup>" + n + "</sup>";
+                    document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "x<sup>" + n + "</sup>";
                 }
             } else {
                 ableitung = false;
                 n= getRandomInt(10);
                 a = getRandomInt(9)+1;
                 if(n==1){
-                    document.getElementById("aufgabe").innerHTML = "f(x) = "+a+"e<sup>x</sup>";
+                    document.getElementById("aufgabe").innerHTML = "f(x) = "+a+"e<sup>x</sup>"; 
                 }else if (n==0){
                     document.getElementById("aufgabe").innerHTML = "f(x) = "+ a + "e<sup>0</sup>";
                     }else{
-                document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "e<sup>" + n + "x</sup>";
+                        document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "e<sup>" + n + "x</sup>";
                 }
             }
         }
@@ -95,11 +102,12 @@
         }
         function solve(){
             var geloest = document.getElementById("solved").value;
+            die += 1;
             if(e){
                 if(ableitung){
                     a = a*n;
                     ergebnis = a + "e^(" + n + "x)";
-                    document.getElementById("solution").innerHTML = "f'(x) = " + a + "e<sup>" + n + "x</sup>";
+                    neo = az + a + "e<sup>" + n + "x</sup>";
                     check(geloest);
                 } else {
                     a = a/n;
@@ -110,7 +118,7 @@
                     }else{
                         ergebnis = a+"e^(" + n + "x)";
                     }
-                    document.getElementById("solution").innerHTML = "F(x) = " + a + "e<sup>" + n + "x</sup>";
+                    neo = "F(x) = " + a + "e<sup>" + n + "x</sup>";
                     check(geloest);
                 }
             }else{
@@ -119,23 +127,28 @@
                     n = n - 1;
                     if(n==0){
                         ergebnis = a+"";
-                        document.getElementById("solution").innerHTML = "f'(x) = " + a;
+                        neo = az + a;
+                    } else if(n==1){
+                        ergebnis = a + "x";
+                        neo = az + a + "x";
                     } else if(a==0){
                         ergebnis = "0";
-                        document.getElementById("solution").innerHTML = "f'(x) = 0";
+                        neo = az + "0";
                     } else {
                         ergebnis = a + "x^" + n;
-                        document.getElementById("solution").innerHTML = "f'(X) = " + a + "x<sup>" + n + "</sup>";
+                        neo = az + a + "x<sup>" + n + "</sup>";
                     }
                     check(geloest);
                 } else {
                     n = n+1;
                     a = a/n;
                     ergebnis = a + "x^" + n;
-                    document.getElementById("solution").innerHTML = "F(x) = " + a + "x<sup>" + n + "</sup>";
+                    neo = "F(x) = " + a + "x<sup>" + n + "</sup>";
                     check(geloest);
                 }
             }
+            document.getElementById("solution").innerHTML = neo;
+            document.getElementById("nomal").innerHTML = "<button onclick='drai()'>Nächste Ableitung</button>"
             
         }
         function check(geloest){
@@ -157,7 +170,55 @@
                     document.getElementById("rueckgabe").innerHTML = "Du Mathenoob.";
                 }
             }
-                
+                  
+        }
+        function drai(){
+            switch(die){
+                case 1:
+                    az = "f''(x) = ";
+                    document.getElementById("art").innerHTML = "f''(x) = ";
+                    break;
+                case 2:
+                    az = "f'''(x) = ";
+                    document.getElementById("art").innerHTML = "f'''(x) = ";
+                    break;
+                case 3:
+                    az = "f''''(x) = ";
+                    document.getElementById("art").innerHTML = "f''''(x) = ";
+                    break;
+                case 4:
+                    az = "f'''''(x) = ";
+                    document.getElementById("art").innerHTML = "f'''''(x) = ";
+                    break;
+                case 5:
+                    az = "f''''''(x) = ";
+                    document.getElementById("art").innerHTML = "f''''''(x) = ";
+                    break;
+                case 6:
+                    az = "f'''''''(x) = ";
+                    document.getElementById("art").innerHTML = "f'''''''(x) = ";
+                    break;
+                case 7:
+                    az = "f''''''''(x) = ";
+                    document.getElementById("art").innerHTML = "f''''''''(x) = ";
+                    break;
+                case 8:
+                    az = "f'''''''''(x) = ";
+                    document.getElementById("art").innerHTML = "f'''''''''(x) = ";
+                    break;
+                case 9:
+                    az = "f''''''''''(x) = ";
+                    document.getElementById("art").innerHTML = "f''''''''''(x) = ";
+                    break;
+                case 10:
+                    az = "f'''''''''''(x) = ";
+                    document.getElementById("art").innerHTML = "f'''''''''''(x) = ";
+                    break;
+                default:
+                    document.getElementById("art").innerHTML = "Jetzt komm mal Runter";
+            }
+            document.getElementById("nomal").innerHTML = "";
+            document.getElementById("aufgabe").innerHTML = neo;
         }
     </script>
     <script src="../jquery.js"></script>
