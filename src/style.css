@@ -17,6 +17,7 @@ body {
     --color: #4faace;
     --color-dark: #3a4b81;
     --dark: #333;
+    --shadow-color: rgba(0, 0, 0, 0.5);
     background-color: var(--dark);
     color: white;
     font-family: "Main";
@@ -39,7 +40,7 @@ h2 {
 }
 
 button, input, table {
-    box-shadow: 0 0 5px #0007;
+    box-shadow: 0 0 5px var(--shadow-color);
     margin: 3px;
 }
 
@@ -51,7 +52,6 @@ button, input[type=submit] {
     font-family: inherit;
     padding: 4px 8px;
     cursor: pointer;
-    transition-duration: 0.1s;
     font-weight: bold;
 }
 
@@ -90,7 +90,7 @@ div.center {
     height: 100%;
     top: 0;
     right: -25px;
-    background-color: #fffa;
+    background-color: rgba(255, 255, 255, 0.7);
     transition: inherit;
     transition-delay: 0.25s;
     z-index: 1;
@@ -114,7 +114,7 @@ div.center {
     top: 0;
     transition-duration: 0.3s;
     transition-timing-function: ease;
-    box-shadow: 0 0 10px #000a;
+    box-shadow: 0 0 10px var(--shadow-color);
 }
 
 #sidebar.open {
@@ -128,7 +128,7 @@ div.center {
     height: min-content;
     width: 100%;
     transition-duration: 0.3s;
-    box-shadow: 0 4px 8px -2px #0005;
+    box-shadow: 0 4px 8px -2px var(--shadow-color);
     position: relative;
 }
 
