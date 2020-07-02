@@ -11,6 +11,7 @@ $(document).ready(() => {
     addSidebarStuff(sidebar, "Startseite", "/mathetrainer/index.html");
 	addSidebarStuff(sidebar, "Ableitung und Integral", "/mathetrainer/Ableitung-Integral/index.html");
     addSidebarStuff(sidebar, "Binomialverteilung", "/mathetrainer/Binomialverteilung/index.php");
+	addSidebarStuff(sidebar, "Bruchgleichungen", "/mathetrainer/Bruchgleichungen/index.php");
 	addSidebarStuff(sidebar, "Hypothesentests", "/mathetrainer/Hypothesentests/index.html");
 	addSidebarStuff(sidebar, "Wurzelrechner", "/mathetrainer/Wurzeln/index.html");
 	addSidebarStuff(sidebar, "Impressum", "/mathetrainer/impressum.html");

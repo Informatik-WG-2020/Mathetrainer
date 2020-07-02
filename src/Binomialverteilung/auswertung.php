@@ -5,6 +5,7 @@
 	<title>Mathetrainer: Binomialverteilung</title>
 </head>
 <body>
+<a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
 <h1> Binomialverteilung: Lösung </h1><br>
 <?php
 

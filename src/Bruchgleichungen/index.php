@@ -9,10 +9,11 @@
 -->
 <html>
     <head>
-        <title>Bruchrechnen</title>
+        <title>Mathetrainer: Bruchgleichungen</title>
 		<link rel="stylesheet" href="../style.css">
     </head>
     <body>
+		<a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
         <?php
             $new = $_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-1];
             if(!isset($_COOKIE["aufgabe"]) && $new != "d" && $new != "e"){
@@ -57,7 +58,7 @@
                                 $i++;
                             }
                             if($k1 == 0){
-                                $hilfx1 = "'>";
+                                $hilfx1 = "' required>";
                             }else{
                                 $hilfx1 = $hilfx1 . "' readonly>";
                             }
@@ -78,7 +79,7 @@
                             $i++;
                             }
                             if($k1 == 1){
-                                $hilfx2 = "'>";
+                                $hilfx2 = "' required>";
                             }else{
                                 $hilfx2 = $hilfx2 . "' readonly>";
                             }
@@ -95,7 +96,7 @@
                             $i++;
                             }
                             if($k1 == 2){
-                                $hilfx3 = "'>";
+                                $hilfx3 = "' required>";
                             }else{
                                 $hilfx3 = $hilfx3 . "' readonly>";
                             }
@@ -143,7 +144,7 @@
                             $i++;
                             }
                             if($k2 == 0){
-                                $hilfy1 = "'>";
+                                $hilfy1 = "' required>";
                             }else{
                                 $hilfy1 = $hilfy1 . "' readonly>";
                             }
@@ -160,7 +161,7 @@
                             $i++;
                             }
                             if($k2 == 1){
-                                $hilfy2 = "'>";
+                                $hilfy2 = "' required>";
                             }else{
                                 $hilfy2 = $hilfy2 . "' readonly>";
                             }
@@ -177,7 +178,7 @@
                             $i++;
                             }
                             if($k2 == 2){
-                                $hilfy3 = "'>";
+                                $hilfy3 = "' required>";
                             }else{
                                 $hilfy3 = $hilfy3 . "' readonly>";
                             }
@@ -191,11 +192,14 @@
                 echo "<input type='hidden' id='fall' name='fall' value='" . $finalString[strlen($finalString)-1] . "'>";
             ?>
             <button type="button" onclick="window.location.href = 'bruchrechnenCreate.php'">Neue Aufgabe</button>
+            <button type="submit" id="abgeben">Abgeben</button>
             <?php
                 if($new == "d" or $new == "e"){
-                    echo '<button type="submit" title="Aufgabe wurde bereits abgegeben!" disabled>Abgeben</button>';
-                } else {
-                    echo '<button type="submit">Abgeben</button>';
+                    echo '<script>document.getElementById("abgeben").disabled = "disabled";
+                    document.getElementById("abgeben").title = "Aufgabe wurde bereits abgegeben!";
+                    </script>';
+                } elseif($new != "d" or $new != "e") {
+                    echo '<script>document.getElementById("abgeben").removeAttribute("disabled");</script>';
                 }
             ?>
         </form>

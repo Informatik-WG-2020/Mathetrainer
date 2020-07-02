@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
+<a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
 <?php
 
     $caufgaben = 0;

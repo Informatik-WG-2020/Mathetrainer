@@ -126,24 +126,21 @@ div.center {
     color: var(--color-dark);
     background-color: var(--color);
     height: min-content;
-    width: 100%;
     transition-duration: 0.3s;
     box-shadow: 0 4px 8px -2px var(--shadow-color);
     position: relative;
+    padding-left: 20px;
 }
 
 #sidebar > a:hover {
     color: white;
     background-color: var(--color-dark);
+    padding-left: 25px;
 }
 
 #sidebar h3 {
     margin: 8px;
-    margin-left: 20px;
-    transition: inherit;
-}
-#sidebar > a:hover > h3 {
-    margin-left: 25px;
+    margin-left: 0;
 }
 
 a {
@@ -194,4 +191,14 @@ li.bad {
 
 li.good {
     color: #88fd8e;
+}
+
+.icon {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+.icon > img {
+    width: 150px;
 }
