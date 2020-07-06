@@ -17,7 +17,13 @@
 		$a = $_GET['s1'];
 		$r = $_GET['cr'];
 		$f = $_GET['cf'];
+		$b = $_GET['s2']; 
+		$z = $_GET['z'];
+		
+		if($z=="+" or $z=="-")
 		echo "$a<br>"; 
+		else
+		echo "$b<br>";
 		
 	
 	if ($_GET['LoA1'] == $_GET['e'])
