@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <!-- IDEE:
     - coockie für Punktzahl
-    - Lösungsseite (cookie letze Stellen sind falsche Eingabestellen)
     - Negative Brüche oben vor der Zahl ein Minus schreiben
-    - aus -- wird +
-    - bruchrechnenCheck
     - Sicherheit
 -->
 <html>
@@ -14,7 +11,8 @@
     </head>
     <body>
 		<a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
-        <?php
+        <h1>Bruchgleichungen</h1>
+		<?php
             $new = $_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-1];
             if(!isset($_COOKIE["aufgabe"]) && $new != "d" && $new != "e"){
                 echo("<script>window.location.href = 'bruchrechnenCreate.php'</script></body></html>");
@@ -28,16 +26,20 @@
         ?>
         <form action="bruchrechnenCheck.php" methode="get" ><!--enctype="multipart/form-data"> onsubmit="return validateForm()"-->
             <?php
-                if($new != "d" && $new != "e"){
+                $r = 1;
+				while(!is_numeric($_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-$r])) {
+                    $r++;
+                }
+				if($new != "d" && $new != "e"){
                     $k1 = rand(0,2);
                     $k2 = rand(0,2);
                 }else{
                     $k1 = 3;
                     $k2 = 3;
-                }
+				}
             ?>
             <br>
-            <table>
+            <table class="invisible">
                 <tr>
                     <td>
                         <?php
@@ -78,12 +80,21 @@
                             $hilfx2 = $hilfx2 . $finalString[$i];
                             $i++;
                             }
-                            if($k1 == 1){
-                                $hilfx2 = "' required>";
-                            }else{
-                                $hilfx2 = $hilfx2 . "' readonly>";
+                            if(($_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-$r]) == "7"){
+                                if($k2 == 1){
+                                    $hilfx2 = "' required>";
+                                }else{
+                                    $hilfx2 = $hilfx2 . "' readonly>";
+                                }
+                                echo "<input type='number' id='x2' name='x2' value='" . $hilfx2;
+                            } else {
+                                if($k1 == 1){
+                                    $hilfx2 = "' required>";
+                                }else{
+                                    $hilfx2 = $hilfx2 . "' readonly>";
+                                }
+                                echo "<input type='number' id='x2' name='x2' value='" . $hilfx2;
                             }
-                            echo "<input type='number' id='x2' name='x2' value='" . $hilfx2; 
                         ?>
                     </td>
                     <td></td>
@@ -95,12 +106,21 @@
                             $hilfx3 = $hilfx3 . $finalString[$i];
                             $i++;
                             }
-                            if($k1 == 2){
-                                $hilfx3 = "' required>";
-                            }else{
-                                $hilfx3 = $hilfx3 . "' readonly>";
-                            }
-                            echo "<input type='number' id='x3' name='x3' value='" . $hilfx3; 
+                            if(($_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-$r]) == "8"){
+                                if($k2 == 2){
+                                    $hilfx3 = "' required>";
+                                }else{
+                                    $hilfx3 = $hilfx3 . "' readonly>";
+                                }
+                                echo "<input type='number' id='x3' name='x3' value='" . $hilfx3;
+                            } else {
+                                if($k1 == 2){
+                                    $hilfx3 = "' required>";
+                                }else{
+                                    $hilfx3 = $hilfx3 . "' readonly>";
+                                }
+                                echo "<input type='number' id='x3' name='x3' value='" . $hilfx3;
+                            } 
                         ?>
                     </td>
                 </tr>
@@ -160,12 +180,21 @@
                             $hilfy2 = $hilfy2 . $finalString[$i];
                             $i++;
                             }
-                            if($k2 == 1){
-                                $hilfy2 = "' required>";
-                            }else{
-                                $hilfy2 = $hilfy2 . "' readonly>";
+                            if(($_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-$r]) == "7"){
+                                if($k1 == 1){
+                                    $hilfy2 = "' required>";
+                                }else{
+                                    $hilfy2 = $hilfy2 . "' readonly>";
+                                }
+                                echo "<input type='number' id='y2' name='y2' value='" . $hilfy2;
+                            } else {
+                                if($k2 == 1){
+                                    $hilfy2 = "' required>";
+                                }else{
+                                    $hilfy2 = $hilfy2 . "' readonly>";
+                                }
+                                echo "<input type='number' id='y2' name='y2' value='" . $hilfy2;
                             }
-                            echo "<input type='number' id='y2' name='y2' value='" . $hilfy2; 
                         ?>
                     </td>
                     <td></td>
@@ -177,12 +206,21 @@
                             $hilfy3 = $hilfy3 . $finalString[$i];
                             $i++;
                             }
-                            if($k2 == 2){
-                                $hilfy3 = "' required>";
-                            }else{
-                                $hilfy3 = $hilfy3 . "' readonly>";
-                            }
-                            echo "<input type='number' id='y3' name='y3' value='" . $hilfy3; 
+                            if(($_COOKIE["aufgabe"][strlen($_COOKIE["aufgabe"])-$r]) == "8"){
+                                if($k1 == 2){
+                                    $hilfy3 = "' required>";
+                                }else{
+                                    $hilfy3 = $hilfy3 . "' readonly>";
+                                }
+                                echo "<input type='number' id='y3' name='y3' value='" . $hilfy3;
+                            } else {
+                                if($k2 == 2){
+                                    $hilfy3 = "' required>";
+                                }else{
+                                    $hilfy3 = $hilfy3 . "' readonly>";
+                                }
+                                echo "<input type='number' id='y3' name='y3' value='" . $hilfy3;
+                            } 
                         ?>
                     </td>
                 </tr>

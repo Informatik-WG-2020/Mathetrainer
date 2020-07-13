@@ -3,7 +3,6 @@
     <head>
     </head>
     <body>
-		<a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
         <!--<p id="demo"></p>-->
         <script>
             function faktor(h1, h2) {
@@ -60,19 +59,34 @@
                 if(position == false){
                     //Fall 1
                     fall = "1";
-                    operator = new String('ab');
+                    operator = "ab";
                     ahilfx3 = (hilfx1 * hilfy2) + (hilfx2 * hilfy1);
                     ahilfy3 = hilfy1 * hilfy2;
                     hilfx3 = faktor(ahilfx3, ahilfy3);
                     hilfy3 = faktor(ahilfy3, ahilfx3);
                 }else{
                     //Fall 2
-                    fall = "2";
-                    operator = new String('ba');
                     ahilfx3 = (hilfx1 * hilfy2) - (hilfx2 * hilfy1);
                     ahilfy3 = hilfy1 * hilfy2;
                     hilfx3 = faktor(ahilfx3, ahilfy3);
                     hilfy3 = faktor(ahilfy3, ahilfx3);
+                    if(hilfx3 < 0) {
+                        hilfx3 = hilfx3 * (-1);
+                        fall = "4";
+                        operator = "b-";
+                    } else if(hilfy3 < 0) {
+                        hilfy3 = hilfy3 * (-1);
+                        fall = "4";
+                        operator = "b-";
+                    } else if(hilfx3 < 0 && hilfy3 < 0){
+                            hilfx3 = hilfx3 * (-1);
+                            hilfy3 = hilfy3 * (-1);
+                            fall = "2";
+                            operator = "ba";
+                    } else {
+                        fall = "2";
+                        operator = "ba";
+                    }
                 }
             }else if(h < 0.5 && h >= 0.25){
                 if(position == false){
@@ -85,12 +99,27 @@
                     hilfy3 = faktor(ahilfy3, ahilfx3);
                 }else{
                     //Fall 4
-                    fall = "4";
-                    operator = "b-";
                     ahilfx3 = (hilfx2 * hilfy1) - (hilfx1 * hilfy2);
                     ahilfy3 = hilfy1 * hilfy2;
                     hilfx3 = faktor(ahilfx3, ahilfy3);
                     hilfy3 = faktor(ahilfy3, ahilfx3);
+                    if(hilfx3 < 0) {
+                        hilfx3 = hilfx3 * (-1);
+                            fall = "2";
+                            operator = "ba";
+                    } else if(hilfy3 < 0) {
+                        hilfy3 = hilfy3 * (-1);
+                            fall = "2";
+                            operator = "ba";
+                    } else if(hilfx3 < 0 && hilfy3 < 0){
+                            hilfx3 = hilfx3 * (-1);
+                            hilfy3 = hilfy3 * (-1);
+                            fall = "4";
+                            operator = "b-";
+                    } else {
+                        fall = "4";
+                        operator = "b-";
+                    }
                 }
             }else if(h < 0.75 && h >= 0.5){
                 if(position == false){

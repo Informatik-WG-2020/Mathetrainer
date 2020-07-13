@@ -87,7 +87,7 @@
             echo $rhilfy1 . " | " . $hilfy1 . " |";
             echo $rhilfy2 . " | " . $hilfy2 . " |";
             echo $rhilfy3 . " | " . $hilfy3;*/
-            if($hilfx1 != $rhilfx1){
+            /*if($hilfx1 != $rhilfx1){
                 $position = $position ."0";
                 $richtig = false;
             }
@@ -110,17 +110,9 @@
             if($hilfy3 != $rhilfy3){
                 $position = $position ."5";
                 $richtig = false;
-            }
-            if($richtig == false){
-                $finalString = $finalString . $position . "d";
-            }elseif($richtig == true){
-                $finalString = $finalString . $position . "e";
-            }
+            }*/
 
-            setrawcookie("aufgabe",$finalString ,time() + 1800, "/");
-
-
-            /*
+            
             switch($_GET["fall"]) {
                 case 1:
                     $ahilfx3 = ($hilfx1 * $hilfy2) + ($hilfx2 * $hilfy1);
@@ -128,9 +120,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 2:
@@ -139,9 +131,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     } else {
-                       echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 3:
@@ -150,9 +142,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 4:
@@ -161,9 +153,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 5:
@@ -172,9 +164,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 6:
@@ -183,9 +175,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 7:
@@ -194,9 +186,9 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
                 case 8:
@@ -205,12 +197,20 @@
                     $hilfx3 = factor($ahilfx3, $ahilfy3);
                     $hilfy3 = factor($ahilfy3, $ahilfx3);
                     if($hilfx3 == $_GET["x3"] && $hilfy3 == $_GET["y3"]){
-                        echo "Richtig";
+                        $richtig == true;
                     }else{
-                        echo "Falsch";
+                        $richtig == false;
                     }
                     break;
-            }*/
+            }
+            if($richtig == false){
+                $finalString = $finalString . "d";
+            }elseif($richtig == true){
+                $finalString = $finalString . "e";
+            }
+
+            setrawcookie("aufgabe",$finalString ,time() + 1800, "/");
+
             //settype($finalString, "string");
             //$finalString = $hilfx1 . "c" . $hilfx2 . "c" . $hilfx3 . "c" . $operator . "c" . $hilfy1 . "c" . $hilfy2 . "c" . $hilfy3 . "c" . $_GET["fall"];
             //setrawcookie("aufgabeLoesung", $finalString, time() + (1800), "/");
