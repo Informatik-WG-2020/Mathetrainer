@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../style.css">
-    <title>Mathetrainer: Ableitung und Integrale</title>
+    <title>Ableitung und Integrale</title>
+    <h1>Ableitung und Integrale</h1>
 </head>
 <body>
-    <h1>Ableitung und Integrale</h1>
+    
     Aufgabentyp wählen<br>
     <button onclick="eins()">Ableitung</button>
     <button onclick="zwei()">Stammfunktion</button>
@@ -20,9 +22,10 @@
     <br>
     <br>
     <br>
-    <button onclick="window.open('https://www.memedroid.com/memes/top/day','_blank')">Drück mich</button>
+    <!--<button onclick="window.open('https://www.memedroid.com/memes/top/day','_blank')">Drück mich</button>-->
     <script>
         var neo;
+        var fa;
         var az = "f'(x) = ";
         var die = 0;
         var richtig = 0;
@@ -71,11 +74,11 @@
         function zwei(){
             az = "f'(x) = ";
             die = 0;
-            document.getElementById("art").innerHTML = "F(x) = "
+            document.getElementById("art").innerHTML = "F(x) = ";
+            ableitung = false;
+            n= getRandomInt(10);
+            a = getRandomInt(9)+1;
             if (e==false){
-                ableitung = false;
-                n = getRandomInt(10);
-                a = getRandomInt(9)+1;
                 if(n==0){
                     document.getElementById("aufgabe").innerHTML = "f(x) = " + a;
                 }else if(n==1){
@@ -84,9 +87,6 @@
                     document.getElementById("aufgabe").innerHTML = "f(x) = " + a + "x<sup>" + n + "</sup>";
                 }
             } else {
-                ableitung = false;
-                n= getRandomInt(10);
-                a = getRandomInt(9)+1;
                 if(n==1){
                     document.getElementById("aufgabe").innerHTML = "f(x) = "+a+"e<sup>x</sup>"; 
                 }else if (n==0){
@@ -109,16 +109,25 @@
                     neo = az + a + "e<sup>" + n + "x</sup>";
                     check(geloest);
                 } else {
+                    ergebnis = a + "/" + n + "e^(" + n + "x)";
+                    neo = "F(x) = " + a + "/" + n +"e<sup>" + n + "x</sup>";
+                    if(check(geloest)){
+                        return;
+                    }
                     a = a/n;
+                    a = Math.round(a*100)/100;
                     if(a==0){
                         ergebnis = 0+"";
+                        neo = 0+"";
                     } else if(a==1){
                         ergebnis = "e^(" + n + "X)";
+                        neo = "e<sup>" + n + "x</sup>";
                     }else{
                         ergebnis = a+"e^(" + n + "x)";
+                        neo = "F(x) = " + a + "e<sup>" + n + "x</sup>";
                     }
-                    neo = "F(x) = " + a + "e<sup>" + n + "x</sup>";
                     check(geloest);
+                    
                 }
             }else{
                 if(ableitung){
@@ -140,13 +149,19 @@
                     check(geloest);
                 } else {
                     n = n+1;
+                    ergebnis = a + "/" + n + "x^" + n;
+                    neo =  "F(x) = "+a+"/"+n+"x<sup>"+n+"</sup>";
+                    if(check(geloest)){
+                        return;
+                    }
                     a = a/n;
+                    a = Math.round(a*100)/100;
                     ergebnis = a + "x^" + n;
                     neo = "F(x) = " + a + "x<sup>" + n + "</sup>";
                     check(geloest);
+                    
                 }
             }
-            document.getElementById("solution").innerHTML = neo;
             document.getElementById("nomal").innerHTML = "<button onclick='drai()'>Nächste Ableitung</button>"
             
         }
@@ -154,8 +169,9 @@
             if(ergebnis === geloest){
                 richtig += 1;
                 document.getElementById("rueckgabe").innerHTML = "Herzlichen Glückwunsch die Eingabe war richtig. <br>Du hast " + richtig + " richtige Lösungen eingegeben";
+                
+                return true;
             } else {
-                var beleidigung;
                 var answer = getRandomInt(5);
                 if(answer==0){
                     document.getElementById("rueckgabe").innerHTML = "Was kannst du eigentlich du Depp, die Eingabe war ja grottenfalsch!";
@@ -169,6 +185,7 @@
                     document.getElementById("rueckgabe").innerHTML = "Du Mathenoob.";
                 }
             }
+            document.getElementById("solution").innerHTML = neo;
                   
         }
         function drai(){
