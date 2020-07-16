@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../style.css">
-    <title>Ableitung und Integrale</title>
-    <h1>Ableitung und Integrale</h1>
+    <title>Mathetrainer: Ableitung und Integrale</title>
 </head>
 <body>
-    
+    <a class="icon" href="/mathetrainer/index.html"><image src="/mathetrainer/mathetrainer.png" alt="Mathetrainer-Logo" /></a>
+	
+	<h1>Ableitung und Integrale</h1>
     Aufgabentyp wählen<br>
     <button onclick="eins()">Ableitung</button>
     <button onclick="zwei()">Stammfunktion</button>
@@ -168,8 +168,8 @@
         function check(geloest){
             if(ergebnis === geloest){
                 richtig += 1;
-                document.getElementById("rueckgabe").innerHTML = "Herzlichen Glückwunsch die Eingabe war richtig. <br>Du hast " + richtig + " richtige Lösungen eingegeben";
-                
+                document.getElementById("rueckgabe").innerHTML = "Herzlichen Glückwunsch die Eingabe war richtig. <br>Du hast " + richtig + " richtige Lösungen eingegeben";  
+                document.getElementById("solution").innerHTML = neo;
                 return true;
             } else {
                 var answer = getRandomInt(5);
@@ -184,8 +184,8 @@
                 }else{
                     document.getElementById("rueckgabe").innerHTML = "Du Mathenoob.";
                 }
+                document.getElementById("solution").innerHTML = neo;
             }
-            document.getElementById("solution").innerHTML = neo;
                   
         }
         function drai(){
